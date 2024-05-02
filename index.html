@@ -4,14 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nhìn Hình Đoán Chữ</title>
+    <style>
+        .container {
+            position: relative;
+            width: 600px; /* hoặc kích thước mong muốn cho container */
+            height: 400px; /* hoặc kích thước mong muốn cho container */
+            margin: 0 auto; /* căn giữa theo chiều ngang */
+            text-align: center; /* căn giữa nội dung trong container */
+        }
+        .table{
+            border: 10px black;
+            top: auto;
+        }
+
+    </style>
 </head>
 <body>
-<img src="images/imageStart.gif" alt="" width="600px" height="400px" ><br>
-<img src="images/buttonStart.gif" id="next1" height="100px" width="200px" style="cursor: pointer " >
+<div class="container">
+    <img src="images/imageStart.gif" alt="" width="600px" height="500px">
+    <img src="images/buttonStart.gif" id="start-game" height="100px" width="200px" style="cursor: pointer">
+</div>
 
-<script src="game.js">
+<div class="table">
+    <table id="information" >
+        <tr>
+            <th>STT</th>
+            <th>TÊN</th>
+            <th>ĐIỂM</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+        </tr>
 
+    </table>
+</div>
+
+
+<script >
+    const buttonStart = document.getElementById("start-game");
+    buttonStart.addEventListener("click", function () {
+        window.location.href = "playGame.html";
+    });
 
 </script>
 </body>
 </html>
+

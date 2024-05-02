@@ -1,13 +1,11 @@
-// const buttonStart = document.getElementById("next1");
-// buttonStart.addEventListener("click", function () {
-//     window.location.href = "level1.html";
-// });
-
 const words = [
-    {image: "Level1.png", answer:"cầu trì" },
-    {image: "Level2.png", answer:"chữ nho" },
-    {image: "Level3.png", answer:"báo cáo" }
-
+    {image: "images/picture1.png", answer:"cầu chì" },
+    {image: "images/picture2.png", answer:"chữ nho" },
+    {image: "images/picture3.png", answer:"nội gián" },
+    {image: "images/picture4.png", answer:"cà mau" },
+    {image: "images/picture5.png", answer:"tất yếu" },
+    {image: "images/picture6.png", answer:"sóc trăng" },
+    {image: "images/picture7.png", answer:"thái bình" }
 ];
 
 let wordIndex = 0;
@@ -22,13 +20,15 @@ let displayTime = document.getElementById("time-out");
 let displayCount = document.getElementById("count-answer");
 let defaultTime = 30;
 let countAnswer = 3;
-let point = 0;
+let Point = 0;
+let timedownInterval;
 
-// Hiển thị thời gian trả lời câu hỏi
-timeAnswer(30);
 
 // Hiển thị từ và hình ảnh đầu tiên khi trang được tải
 showWordAndImage(currentWord);
+
+// Hiển thị thời gian trả lời câu hỏi
+timeAnswer(defaultTime);
 
 // Lắng nghe sự kiện click vào nút Submit
 summitGuess.addEventListener("click", function() {
@@ -45,16 +45,12 @@ function checkGuess() {
     let guess = inputGuess.value.toLowerCase().trim();
     if (guess === currentWord.answer) {
         displayResult.innerHTML = "<h3>Bạn trả lời đúng rồi,đang chuyển sang từ tiếp theo...</h3>";
-        setTimeout(nextWord, 2000); // Chuyển sang từ tiếp theo sau 2 giây
-        displayCount.value ="";
         plusPoint();
-        resetTime();
+        setTimeout(nextWord, 2000); // Chuyển sang từ tiếp theo sau 2 giây
     } else {
         displayResult.innerHTML = "<h3>Trả lời sai rồi,thử lại đi</h3> ";
         countResponse(countAnswer);
     }
-    // Xóa nội dung trong ô nhập
-    inputGuess.value = "";
 }
 
 // Đếm số lần trả lời sai
@@ -69,30 +65,32 @@ function countResponse() {
 }
 
 // Set thời gian trả lời
-function timeAnswer(seconds) {
-    let time = seconds;
-    const timedownInterval = setInterval(function() {
+function timeAnswer(time) {
+   timedownInterval = setInterval(function () {
         if (time > 0) {
             displayTime.innerText = "Thời gian:" + time;
             time--;
-        } else {
+        }
+        else {
             clearInterval(timedownInterval);
             alert("Bạn thua rồi");
             window.location.href = "index.html";
         }
     }, 1000); // Đếm mỗi giây
- }
+    return timedownInterval;
+}
 
-//  Reset thời gian khi trả lời đúng
+// reset thời gian khi chuyển câu
 function resetTime() {
     clearInterval(timedownInterval); // Dừng đếm ngược hiện tại
     displayTime.innerText = "Thời gian: " + defaultTime; // Đặt lại thời gian hiển thị
     timeAnswer(defaultTime); // Bắt đầu đếm ngược mới
 }
 
+// Hàm cộng điểm khi trả lời đúng
 function plusPoint() {
-    point += 100;
-    pointAnswer.innerText = "Điểm:"+ point ;
+      Point += 100;
+    pointAnswer.innerText = "Điểm:"+ Point ;
 }
 
 // Hàm chuyển sang từ tiếp theo
@@ -102,10 +100,15 @@ function nextWord() {
         currentWord = words[wordIndex];
         showWordAndImage(currentWord);
         displayResult.innerText = "";
+        inputGuess.value = "";
+        displayCount.innerText ="Số lần đoán: ";
+        countAnswer = 3;
+        resetTime();
 
     } else {
         // Nếu đã đoán hết tất cả các từ, hiển thị thông báo kết thúc trò chơi
-        displayResult.innerText = "Chúc mừng bạn đã chiến thắng";
+         alert("Chúc mừng bạn đã chiến thắng") ;
+         window.location.href="index.html";
 
     }
 }
