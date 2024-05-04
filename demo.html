@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Score</title>
+</head>
+<body>
+<h2>Game Score</h2>
+<button onclick="addPlayer()">Add Player</button>
+<table id="scoreTable">
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+</table>
+
+<script >
+    // Mảng lưu trữ thông tin người chơi
+    var players = [];
+
+    function addPlayer() {
+        var name = prompt("Enter player name:");
+        var score = parseInt(prompt("Enter player score:")); // Chuyển điểm số thành số nguyên
+
+        if (name && !isNaN(score)) {
+            // Thêm người chơi vào mảng
+            players.push({ name: name, score: score });
+            // Cập nhật bảng
+            updateTable();
+        } else {
+            alert("Please enter valid name and score.");
+        }
+    }
+
+    function updateTable() {
+        var table = document.getElementById("scoreTable");
+        // Xóa dữ liệu cũ
+        table.innerHTML = `
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+    `;
+        // Thêm dữ liệu mới từ mảng players
+        players.forEach(function(player) {
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = player.name;
+            cell2.innerHTML = player.score;
+        });
+    }
+
+</script>
+</body>
+</html>

@@ -18,9 +18,9 @@ let displayResult = document.getElementById("result");
 let pointAnswer = document.getElementById("point-answer") ;
 let displayTime = document.getElementById("time-out");
 let displayCount = document.getElementById("count-answer");
-let defaultTime = 30;
+let defaultTime = 60;
 let countAnswer = 3;
-let Point = 0;
+let point= 0;
 let timedownInterval;
 
 
@@ -44,11 +44,11 @@ function showWordAndImage(word) {
 function checkGuess() {
     let guess = inputGuess.value.toLowerCase().trim();
     if (guess === currentWord.answer) {
-        displayResult.innerHTML = "<h3>Bạn trả lời đúng rồi,đang chuyển sang từ tiếp theo...</h3>";
+        displayResult.innerHTML = "<h3>XUẤT SẮC</h3>";
         plusPoint();
         setTimeout(nextWord, 2000); // Chuyển sang từ tiếp theo sau 2 giây
     } else {
-        displayResult.innerHTML = "<h3>Trả lời sai rồi,thử lại đi</h3> ";
+        displayResult.innerHTML = "<h3>SAI RỒI!</h3> ";
         countResponse(countAnswer);
     }
 }
@@ -57,10 +57,10 @@ function checkGuess() {
 function countResponse() {
     countAnswer--;
     if (countAnswer > 0) {
-        displayCount.innerText =  "Số lần đoán: " + countAnswer ;
+        displayCount.innerText =  "Bạn còn " + countAnswer + " lượt đoán" ;
     } else {
         alert("Bạn thua rồi")
-        window.location.href = "index.html";
+        endGame();
     }
 }
 
@@ -74,7 +74,7 @@ function timeAnswer(time) {
         else {
             clearInterval(timedownInterval);
             alert("Bạn thua rồi");
-            window.location.href = "index.html";
+            endGame();
         }
     }, 1000); // Đếm mỗi giây
     return timedownInterval;
@@ -89,8 +89,8 @@ function resetTime() {
 
 // Hàm cộng điểm khi trả lời đúng
 function plusPoint() {
-      Point += 100;
-    pointAnswer.innerText = "Điểm:"+ Point ;
+      point+= 100;
+    pointAnswer.innerText = "Điểm:"+ point;
 }
 
 // Hàm chuyển sang từ tiếp theo
@@ -101,14 +101,62 @@ function nextWord() {
         showWordAndImage(currentWord);
         displayResult.innerText = "";
         inputGuess.value = "";
-        displayCount.innerText ="Số lần đoán: ";
+        displayCount.innerText ="";
         countAnswer = 3;
         resetTime();
 
     } else {
         // Nếu đã đoán hết tất cả các từ, hiển thị thông báo kết thúc trò chơi
          alert("Chúc mừng bạn đã chiến thắng") ;
-         window.location.href="index.html";
+         endGame();
 
     }
 }
+function endGame(){
+    // name = prompt("Nhập tên người chơi");
+    // saveScore(name,point);
+    window.location.href="endGame.html";
+
+}
+
+
+// --------------------------------Chưa hoàn thành-----------------------------------------------
+
+// // Lưu trữ thông tin người chơi
+// function saveScore(playerName,playerScore) {
+//     // Kiểm tra xem trình duyệt có hỗ trợ Local Storage không
+//     if (typeof(Storage) !== "undefined") {
+//         // Lưu thông tin vào Local Storage
+//         localStorage.setItem("playerName", playerName);
+//         localStorage.setItem("playerScore", playerScore);
+//         alert("Score saved successfully!");
+//     } else {
+//         alert("Sorry, your browser does not support Web Storage...");
+//     }
+// }
+// window.onload = function() {
+//     if (typeof(Storage) !== "undefined") {
+//         // Lấy dữ liệu từ Local Storage
+//         var playerName = localStorage.getItem("playerName");
+//         var playerScore = localStorage.getItem("playerScore");
+//
+//         // Kiểm tra xem dữ liệu có tồn tại không
+//         if (playerName && playerScore) {
+//             // Tạo một hàng mới trong bảng
+//             var tableBody = document.getElementById("scoreTableBody");
+//             var newRow = tableBody.insertRow();
+//
+//             // Thêm các ô vào hàng mới
+//             var cell1 = newRow.insertCell(0);
+//             var cell2 = newRow.insertCell(1);
+//
+//             // Thiết lập giá trị cho các ô
+//             cell1.innerHTML = playerName;
+//             cell2.innerHTML = playerScore;
+//         }
+//     } else {
+//         alert("Sorry, your browser does not support Web Storage...");
+//     }
+// }
+
+

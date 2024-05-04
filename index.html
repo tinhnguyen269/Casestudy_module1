@@ -5,52 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nhìn Hình Đoán Chữ</title>
     <style>
-        .container {
-            position: relative;
-            width: 600px; /* hoặc kích thước mong muốn cho container */
-            height: 400px; /* hoặc kích thước mong muốn cho container */
-            margin: 0 auto; /* căn giữa theo chiều ngang */
-            text-align: center; /* căn giữa nội dung trong container */
+        body{
+            background-image: url("https://cdn.pixabay.com/animation/2023/02/13/09/42/09-42-58-584_512.gif");
+            background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+            background-size: cover; /* Tự động điều chỉnh kích thước để phủ toàn bộ màn hình */
         }
-        .table{
-            border: 10px black;
-            top: auto;
+        h1 {
+            font-size: 100px; /* Kích thước lớn hơn */
+            font-family: 'Amatic SC', cursive; /* Sử dụng font đáng yêu */
+            font-weight: bold; /* Kiểu chữ đậm */
+            color: #ff69b4; /* Màu hồng */
+            text-align: center;
+            animation: colorChange 2s infinite; /* Áp dụng animation */
         }
 
+        /* Keyframes cho hiệu ứng nhấp nháy đổi màu */
+        @keyframes colorChange {
+            0% { color: red; } /* Màu ban đầu */
+            50% { color: blue; } /* Màu thứ hai */
+            100% { color: red; } /* Quay lại màu ban đầu */
+        }
+        .button-start {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffffff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .button-start:hover {
+            background-color: #45a049;
+        }
+        .center{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <img src="images/imageStart.gif" alt="" width="600px" height="500px">
-    <img src="images/buttonStart.gif" id="start-game" height="100px" width="200px" style="cursor: pointer">
-</div>
-
-<div class="table">
-    <table id="information" >
-        <tr>
-            <th>STT</th>
-            <th>TÊN</th>
-            <th>ĐIỂM</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td></td>
-            <td></td>
-        </tr>
-
-    </table>
-</div>
-
+    <h1>Nhìn hình đoán chữ</h1>
+    <div class="center">
+        <button class="button-start" id="start-game"  style="cursor: pointer"> Bắt đầu </button>
+    </div>
 
 <script >
     const buttonStart = document.getElementById("start-game");

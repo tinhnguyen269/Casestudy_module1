@@ -1,0 +1,50 @@
+#image-container{
+    text-align: center;
+}
+#input-container{
+    text-align: center;
+}
+#result{
+    text-align: center;
+    font-size: 30px;
+}
+#guess-input{
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+#guess-input:hover {
+    border-color: #999;
+}
+#submit-guess{
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#result-container {
+    position: fixed; /* Đặt vị trí cố định */
+    top: 0; /* Đặt ở đỉnh */
+    left: 0; /* Đặt ở góc trái */
+    padding: 20px; /* Khoảng cách với lề */
+    font-size: 40px; /* Kích thước font chữ */
+    font-weight: bold; /* Chữ đậm */
+    color: green; /* Màu đỏ */
+}
+#count-answer{
+    font-size: 30px;
+    color: red;
+
+}
+body {
+    background-image: url("https://i.pinimg.com/550x/ae/75/8f/ae758fe3f284defb50e8916413c1414b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

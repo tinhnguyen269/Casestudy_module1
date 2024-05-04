@@ -3,18 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Nhìn hình đoán chữ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div><p id="image-container" style="width: 200px"   ></p> </div>
+<div id="container">
+    <div id="result-container">
+        <div id="time-out">Thời gian:</div>
+        <br>
+        <div id="point-answer">Điểm:</div>
+
+    </div>
+    <div id="image-container">
+        <!-- Đây là nơi hiển thị hình ảnh -->
+    </div>
+
+    <br>
+    <div id="input-container">
+        <label for="guess-input">NHẬP ĐÁP ÁN</label>
+        <input type="text" id="guess-input">
+        <button id="submit-guess">Chốt đáp án</button>
+        <div id="result"></div>
+        <div id="count-answer"></div>
+    </div>
 
 
-<label for="guess-input">NHẬP ĐÁP ÁN</label>
-<input type="text" id="guess-input">
-<button id="submit-guess" style="cursor: pointer ">Chốt đáp án</button>
-<p id="result"></p>
-<div id="count-answer">Số lần đoán:</div>
-<div id="point-answer">Điểm:</div>
-<div id="time-out">Thời gian:</div>
+</div>
 <script src="game.js"></script>
 </body>
 </html>

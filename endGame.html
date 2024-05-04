@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Game Scores</h1>
+
+<table id="scoreTable" border="1">
+    <thead>
+    <tr>
+        <th>Player Name</th>
+        <th>Score</th>
+    </tr>
+    </thead>
+    <tbody id="scoreTableBody">
+    <!-- Table content will be added dynamically -->
+    </tbody>
+</table>
+
+<button id="resetGame">Chơi Lại</button>
+<script >
+    const buttonReset = document.getElementById("resetGame");
+    buttonReset.addEventListener("click", function () {
+        window.location.href = "index.html"
+    });
+</script>
+
+
+
+
+
+</body>
+</html>
